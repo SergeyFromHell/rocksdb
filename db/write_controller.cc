@@ -43,12 +43,13 @@ bool WriteController::IsStopped() const {
 // synchronization model here.
 // The function trust caller will sleep micros returned.
 uint64_t WriteController::GetDelay(Env* env, uint64_t num_bytes) {
+  /*
   if (total_stopped_.load(std::memory_order_relaxed) > 0) {
     return 0;
   }
   if (total_delayed_.load(std::memory_order_relaxed) == 0) {
     return 0;
-  }
+  }*/
 
   const uint64_t kMicrosPerSecond = 1000000;
   const uint64_t kRefillInterval = 1024U;
