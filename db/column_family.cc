@@ -853,6 +853,7 @@ WriteStallCondition ColumnFamilyData::RecalculateWriteStallConditions(
         }
       } else {
         write_controller_token_.reset();
+        write_controller_token_ = write_controller->GetDelayToken(write_controller->max_delayed_write_rate());
       }
       // If the DB recovers from delay conditions, we reward with reducing
       // double the slowdown ratio. This is to balance the long term slowdown
